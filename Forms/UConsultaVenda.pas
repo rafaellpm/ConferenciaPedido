@@ -23,14 +23,28 @@ uses
   dxSkinWhiteprint, dxSkinXmas2008Blue, cxCustomData, cxFilter, cxData,
   cxDataStorage, cxEdit, cxNavigator, dxDateRanges, Data.DB, cxDBData,
   cxGridLevel, cxClasses, cxGridCustomView, cxGridCustomTableView,
-  cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls;
+  cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls, Vcl.StdCtrls,
+  Vcl.ComCtrls, DBAccess, MyAccess, MemDS, UConexao;
 
 type
-  TForm3 = class(TForm)
+  TFrmConsultaPedido = class(TForm)
     Panel1: TPanel;
     cxGrid1DBTableView1: TcxGridDBTableView;
     cxGrid1Level1: TcxGridLevel;
     cxGrid1: TcxGrid;
+    Edit1: TEdit;
+    ComboBox1: TComboBox;
+    DateTimePicker1: TDateTimePicker;
+    DateTimePicker2: TDateTimePicker;
+    a: TLabel;
+    ColunCodOrc: TcxGridDBColumn;
+    ColunNomeCliente: TcxGridDBColumn;
+    ColunData: TcxGridDBColumn;
+    ColunTotal: TcxGridDBColumn;
+    MyQuery1: TMyQuery;
+    MyDataSource1: TMyDataSource;
+    procedure Edit1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
     { Private declarations }
   public
@@ -38,10 +52,28 @@ type
   end;
 
 var
-  Form3: TForm3;
+  FrmConsultaPedido: TFrmConsultaPedido;
 
 implementation
 
+
 {$R *.dfm}
+
+procedure TFrmConsultaPedido.Edit1KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if Key = 13 then
+  begin
+    MyQuery1.SQL.Add('SELECT * FROM ORCAMENTO');
+    MyQuery1.ExecSQL;
+  end;
+end;
+
+procedure TFrmConsultaPedido.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if Key = VK_RETURN then
+    perform(WM_NEXTDLGCTL,0,0);
+end;
 
 end.
