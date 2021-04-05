@@ -83,6 +83,9 @@
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <DCC_ExeOutput>E:\Programação\ConferenciaPedido\</DCC_ExeOutput>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
@@ -93,6 +96,9 @@
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
+        <DCC_ExeOutput>E:\Sistema\</DCC_ExeOutput>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Locale>1033</VerInfo_Locale>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
@@ -100,15 +106,20 @@
         </DelphiCompile>
         <DCCReference Include="Upas\UConfig.pas"/>
         <DCCReference Include="Forms\UConferencia.pas">
-            <Form>Form1</Form>
+            <Form>FrmConferencia</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Forms\UConsultaProduto.pas">
             <Form>Form2</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Forms\UConsultaVenda.pas">
-            <Form>Form3</Form>
+        <DCCReference Include="Upas\UConexao.pas">
+            <Form>DMConexao</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Forms\UConsultaOrcamento.pas">
+            <Form>FrmConsultarOrcamento</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
@@ -131,6 +142,15 @@
                 <Source>
                     <Source Name="MainSource">Conferencia.dpr</Source>
                 </Source>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k270.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp270.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Program Files (x86)\tmssoftware\TMSVCLUIPack RSXE13\Win32\TMSVCLUIPackPkgDXE13.bpl">TMS VCL UI Pack</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Program Files (x86)\tmssoftware\TMSVCLUIPack RSXE13\Win32\TMSVCLUIPackPkgExDXE13.bpl">TMS VCL UI Pack Extra</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Program Files (x86)\tmssoftware\TMSVCLUIPack RSXE13\Win32\TMSVCLUIPackPkgDEDXE13.bpl">TMS VCL UI Pack design time support</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Program Files (x86)\tmssoftware\TMSVCLUIPack RSXE13\Win32\TMSVCLUIPackPkgXlsDXE13.bpl">TMS TAdvStringGrid Excel support</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Program Files (x86)\tmssoftware\TMSVCLUIPack RSXE13\Win32\TMSVCLUIPackPkgWizDXE13.bpl">TMS VCL UI Pack Wizards</Excluded_Packages>
+                </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">
                 <DeployFile LocalName="Win32\Debug\Conferencia.exe" Configuration="Debug" Class="ProjectOutput">
